@@ -2,9 +2,18 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 export default function WaitlistPage() {
   const [copied, setCopied] = useState(false);
+  const searchParams = useSearchParams();
+  const statusParam = searchParams.get('status');
+  const positionParam = searchParams.get('position');
+  const parsedPosition = Number.parseInt(positionParam ?? '', 10);
+  const positionLabel =
+    Number.isFinite(parsedPosition) && parsedPosition > 0 ? parsedPosition.toLocaleString('en-US') : '4,892';
+  const titleText = statusParam === 'exists' ? "You're already on the list!" : "You're on the list!";
+  const introText = statusParam === 'exists' ? 'Welcome back!' : 'Thank you for joining the waitlist.';
 
   async function handleCopy() {
     if (navigator?.clipboard?.writeText) {
@@ -72,11 +81,11 @@ export default function WaitlistPage() {
           </div>
 
           <h1 className="mb-3 bg-gradient-to-r from-primary to-secondary bg-clip-text text-3xl font-extrabold text-transparent">
-            You're on the list!
+            {titleText}
           </h1>
           <p className="font-medium leading-relaxed text-text-sub-light dark:text-text-sub-dark">
-            Thank you for joining the waitlist. You are currently <span className="font-bold text-primary">#4,892</span>{' '}
-            in line to create your own idol universe.
+            {introText} You are currently <span className="font-bold text-primary">#{positionLabel}</span> in line to
+            create your own idol universe.
           </p>
         </div>
 

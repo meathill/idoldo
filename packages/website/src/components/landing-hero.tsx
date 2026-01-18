@@ -4,13 +4,50 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
+interface WaitlistResponse {
+  status: 'joined' | 'exists';
+  position: number;
+}
+
 export default function LandingHero() {
   const router = useRouter();
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  function handleJoin(event: React.FormEvent<HTMLFormElement>) {
+  async function handleJoin(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    router.push('/waitlist');
+    if (!email.trim()) {
+      setStatus('error');
+      setErrorMessage('Please enter a valid email address.');
+      return;
+    }
+    setStatus('submitting');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'landing-hero' }),
+      });
+
+      if (!response.ok) {
+        const errorData = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(errorData?.error ?? 'Failed to join waitlist.');
+      }
+
+      const data = (await response.json()) as WaitlistResponse;
+      const params = new URLSearchParams();
+      if (Number.isFinite(data.position)) {
+        params.set('position', String(data.position));
+      }
+      params.set('status', data.status);
+      router.push(`/waitlist?${params.toString()}`);
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Failed to join waitlist.');
+    }
   }
 
   function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -67,14 +104,16 @@ export default function LandingHero() {
               </div>
               <button
                 type="submit"
-                className="h-12 whitespace-nowrap rounded-full bg-primary px-8 font-bold text-white shadow-glow transition-all active:scale-95 sm:h-14 hover:bg-primary-dark">
-                Get Early Access
+                disabled={status === 'submitting'}
+                className="h-12 whitespace-nowrap rounded-full bg-primary px-8 font-bold text-white shadow-glow transition-all hover:bg-primary-dark active:scale-95 disabled:cursor-not-allowed disabled:opacity-70 sm:h-14">
+                {status === 'submitting' ? 'Joining...' : 'Get Early Access'}
               </button>
             </form>
             <p className="flex items-center justify-center gap-1 text-xs font-medium text-text-sub-light dark:text-text-sub-dark lg:justify-start">
               <span className="material-symbols-outlined text-sm">lock</span>
               No spam. Unsubscribe anytime.
             </p>
+            {status === 'error' ? <p className="text-xs font-medium text-red-500">{errorMessage}</p> : null}
           </div>
 
           <div className="perspective-1000 relative mt-12 flex w-full items-center justify-center lg:mt-0 lg:w-1/2">
