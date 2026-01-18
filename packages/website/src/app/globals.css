@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #ee2bad;
+  --color-primary-dark: #c91a8e;
+  --color-secondary: #9d4edd;
+  --color-background-light: #f8f6f7;
+  --color-background-waitlist: #fdf2f8;
+  --color-background-dark: #22101c;
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #2f1b29;
+  --color-text-main-light: #181116;
+  --color-text-main-dark: #f4f0f3;
+  --color-text-sub-light: #89617c;
+  --color-text-sub-dark: #d1b3c5;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-secondary: var(--color-secondary);
+  --color-background-light: var(--color-background-light);
+  --color-background-waitlist: var(--color-background-waitlist);
+  --color-background-dark: var(--color-background-dark);
+  --color-surface-light: var(--color-surface-light);
+  --color-surface-dark: var(--color-surface-dark);
+  --color-text-main-light: var(--color-text-main-light);
+  --color-text-main-dark: var(--color-text-main-dark);
+  --color-text-sub-light: var(--color-text-sub-light);
+  --color-text-sub-dark: var(--color-text-sub-dark);
+  --font-display: var(--font-plus-jakarta);
+  --font-sans: var(--font-plus-jakarta);
+  --radius: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-2xl: 2.5rem;
+  --radius-3xl: 3rem;
+  --radius-full: 9999px;
+  --shadow-glow: 0 0 20px -5px rgba(238, 43, 173, 0.3);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: max(884px, 100dvh);
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 500,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 500,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.bg-confetti {
+  background-image:
+    radial-gradient(#ee2bad 1.5px, transparent 1.5px), radial-gradient(#9d4edd 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  background-position:
+    0 0,
+    16px 16px;
+  opacity: 0.1;
+}
+
+.shadow-glow {
+  box-shadow: 0 0 20px -5px rgba(238, 43, 173, 0.3);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
 }
