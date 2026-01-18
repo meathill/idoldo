@@ -1,45 +1,42 @@
 {
-	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "idoldo-website",
-	"main": ".open-next/worker.js",
-	"compatibility_date": "2025-12-01",
-	"compatibility_flags": [
-		"nodejs_compat",
-		"global_fetch_strictly_public"
-	],
-	"assets": {
-		"binding": "ASSETS",
-		"directory": ".open-next/assets"
-	},
-	"d1_databases": [
-		{
-			"binding": "DB",
-			"database_id": "fb5c9d2c-3999-4ce0-9c4b-399b442c2139",
-			"database_name": "idoldo"
-		}
-	],
-	"images": {
-		"binding": "IMAGES"
-	},
-	"r2_buckets": [
-		{
-			"binding": "NEXT_INC_CACHE_R2_BUCKET",
-			"bucket_name": "site-cache"
-		}
-	],
-	"observability": {
-		"enabled": true
-	},
-	"placement": {
-		"mode": "smart"
-	},
-	"services": [
-		{
-			"binding": "WORKER_SELF_REFERENCE",
-			"service": "idoldo-website"
-		}
-	],
-	"vars": {
-		"NEXT_PUBLIC_SITE_URL": "https://idoldo.com"
-	}
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "idoldo-website",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-12-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".open-next/assets"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_id": "fb5c9d2c-3999-4ce0-9c4b-399b442c2139",
+      "database_name": "idoldo"
+    }
+  ],
+  "images": {
+    "binding": "IMAGES"
+  },
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "site-cache"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "placement": {
+    "mode": "smart"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "idoldo-website"
+    }
+  ],
+  "vars": {
+    "NEXT_PUBLIC_SITE_URL": "https://idoldo.com"
+  }
 }
