@@ -14,3 +14,20 @@ Idoldo
 3. 引入体力机制，用户需要消耗体力才能创建游戏和游玩更多游戏
 
 平台方面，我希望先用 iOS，但我没想好怎么解决分享后即开即玩，也许可以用那个什么 clip？
+
+
+项目目录
+---
+
+- packages/website: 网站，目前是个 waitlist landing page
+- packages/api: API 服务，预备使用 hono 提供 API
+- packages/app: App，使用 React Native + Expo 构建
+
+
+技术架构
+---
+
+- 全部使用 TypeScript，降低开发成本，复用代码
+- 全部使用 TailwindCSS
+- 服务器使用 Cloudflare Workers + Cloudflare 全家桶
+- 应用暂时只支持 iOS
