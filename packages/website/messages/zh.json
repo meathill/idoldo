@@ -1,0 +1,214 @@
+{
+  "common": {
+    "siteName": "IdolDo",
+    "tagline": "为偶像创作游戏"
+  },
+  "nav": {
+    "joinWaitlist": "加入等待列表",
+    "beta": "测试版"
+  },
+  "hero": {
+    "title": "3秒钟为你的<highlight>偶像</highlight>做一款游戏",
+    "subtitle": "释放你的创造力。无需编程。通过 App Clip 即时分享，让粉丝们一起玩。",
+    "emailPlaceholder": "输入你的邮箱",
+    "cta": "抢先体验",
+    "submitting": "加入中...",
+    "noSpam": "不会发送垃圾邮件。随时可以取消订阅。",
+    "emailError": "请输入有效的邮箱地址。",
+    "submitError": "加入等待列表失败。"
+  },
+  "features": {
+    "title": "为什么选择 IdolDo？",
+    "subtitle": "几秒钟内创建、分享和游玩。终极粉丝互动平台。",
+    "oneClick": {
+      "title": "一键创作",
+      "description": "使用我们的魔法棒工具，即刻从你喜欢的照片生成有趣的消消乐游戏。"
+    },
+    "instantPlay": {
+      "title": "即时游玩",
+      "description": "你的朋友无需下载任何东西。分享链接，通过 iOS App Clip 技术即刻开玩。"
+    },
+    "rewards": {
+      "title": "专属奖励",
+      "description": "获得特别粉丝徽章，解锁稀有卡牌套装，登上全球粉丝排行榜。"
+    }
+  },
+  "footer": {
+    "comingSoon": "即将推出",
+    "joinCommunity": "加入社区",
+    "launchingSoon": "即将登陆 App Store",
+    "downloadOn": "下载于",
+    "appStore": "App Store",
+    "copyright": "© {year} IdolDo. 保留所有权利。",
+    "privacy": "隐私政策",
+    "tos": "服务条款",
+    "about": "关于我们",
+    "contact": "联系我们"
+  },
+  "waitlist": {
+    "title": "等待列表",
+    "joined": {
+      "title": "你已加入列表！",
+      "position": "你的排名：第 {position} 位",
+      "subtitle": "轮到你时我们会通知你。",
+      "backHome": "返回首页"
+    },
+    "exists": {
+      "title": "已在列表中！",
+      "position": "你的排名：第 {position} 位",
+      "subtitle": "你已经加入了。我们会尽快联系你！",
+      "backHome": "返回首页"
+    }
+  },
+  "privacy": {
+    "title": "隐私政策",
+    "description": "了解 IdolDo 如何收集、使用和保护您的个人信息。",
+    "lastUpdated": "最后更新：{date}",
+    "intro": "在 IdolDo，我们非常重视您的隐私。本隐私政策解释了当您使用我们的移动应用程序和网站时，我们如何收集、使用、披露和保护您的信息。",
+    "sections": {
+      "collect": {
+        "title": "我们收集的信息",
+        "content": "我们可能会收集您直接提供给我们的信息，包括：\n• 加入等待列表时的电子邮件地址\n• 创建账户时的账户信息\n• 游戏数据和偏好设置\n• 设备信息和使用统计"
+      },
+      "use": {
+        "title": "我们如何使用您的信息",
+        "content": "我们使用收集的信息来：\n• 提供、维护和改进我们的服务\n• 向您发送产品发布的更新\n• 回应您的评论和问题\n• 分析使用模式以提升用户体验"
+      },
+      "share": {
+        "title": "信息共享",
+        "content": "我们不会出售、交易或出租您的个人信息给第三方。我们可能会与协助我们运营的服务提供商共享信息，但须遵守保密协议。"
+      },
+      "security": {
+        "title": "数据安全",
+        "content": "我们实施适当的技术和组织措施，以保护您的个人信息免受未经授权的访问、更改、披露或销毁。"
+      },
+      "contact": {
+        "title": "联系我们",
+        "content": "如果您对本隐私政策有任何疑问，请通过 privacy@idoldo.com 联系我们。"
+      }
+    }
+  },
+  "tos": {
+    "title": "服务条款",
+    "description": "阅读使用 IdolDo 服务的条款和条件。",
+    "lastUpdated": "最后更新：{date}",
+    "intro": "欢迎使用 IdolDo。访问或使用我们的应用程序和服务即表示您同意受这些服务条款的约束。",
+    "sections": {
+      "acceptance": {
+        "title": "接受条款",
+        "content": "使用 IdolDo 即表示您确认您至少年满 13 周岁，并同意遵守这些条款。如果您不同意，请不要使用我们的服务。"
+      },
+      "use": {
+        "title": "服务使用",
+        "content": "您同意仅出于合法目的并按照本条款使用 IdolDo。您不得：\n• 以任何违反适用法律的方式使用服务\n• 上传侵犯知识产权的内容\n• 试图干扰服务的正常运行\n• 未经许可使用自动化手段访问服务"
+      },
+      "content": {
+        "title": "用户内容",
+        "content": "您保留使用 IdolDo 创建的内容的所有权。上传内容即表示您授权我们在平台内使用、展示和分发您的内容。您有责任确保您有权使用您上传的任何图片或材料。"
+      },
+      "intellectual": {
+        "title": "知识产权",
+        "content": "IdolDo 名称、标志以及所有相关名称、标志、产品和服务名称均为 IdolDo 的商标。未经我们事先书面许可，您不得使用这些标志。"
+      },
+      "disclaimer": {
+        "title": "免责声明",
+        "content": "IdolDo 按\"原样\"提供，不提供任何形式的保证。我们不保证服务将不间断、安全或无错误。"
+      },
+      "contact": {
+        "title": "联系我们",
+        "content": "如果您对这些条款有任何疑问，请通过 legal@idoldo.com 联系我们。"
+      }
+    }
+  },
+  "about": {
+    "title": "关于我们",
+    "description": "了解更多关于 IdolDo 以及我们赋能粉丝创造力的使命。",
+    "hero": {
+      "title": "赋能粉丝创造力",
+      "subtitle": "IdolDo 是创建、分享和游玩粉丝游戏的终极平台。我们相信每个粉丝都有故事可讲。"
+    },
+    "mission": {
+      "title": "我们的使命",
+      "content": "我们正在构建让粉丝表达创造力变得无比简单的工具。无需编程，无需学习复杂的软件——只需你的热情和你喜欢的照片。"
+    },
+    "story": {
+      "title": "我们的故事",
+      "content": "IdolDo 源于一个简单的想法：如果任何人都能创建一个有趣、可分享的游戏，以他们最喜欢的偶像为主题呢？我们充满热情的开发者和设计师团队齐心协力，让这个愿景成为现实。"
+    },
+    "values": {
+      "title": "我们的价值观",
+      "creativity": {
+        "title": "创意为先",
+        "description": "我们相信每个人都有创造力。我们的工具消除障碍，让你的想法绽放光芒。"
+      },
+      "community": {
+        "title": "社区驱动",
+        "description": "粉丝是我们所做一切的核心。我们为社区而建，与社区共建。"
+      },
+      "simplicity": {
+        "title": "极致简约",
+        "description": "复杂的技术，简单的体验。创作应该像魔法一样，而不是工作。"
+      }
+    }
+  },
+  "contact": {
+    "title": "联系我们",
+    "description": "联系 IdolDo 团队。我们期待听到您的声音！",
+    "hero": {
+      "title": "与我们联系",
+      "subtitle": "有问题、反馈，或只是想打个招呼？我们期待听到您的声音！"
+    },
+    "info": {
+      "title": "联系方式",
+      "email": {
+        "title": "电子邮件",
+        "general": "一般咨询：hello@idoldo.com",
+        "support": "支持：support@idoldo.com",
+        "press": "媒体：press@idoldo.com"
+      },
+      "social": {
+        "title": "关注我们",
+        "description": "获取我们最新的新闻和功能更新。"
+      }
+    },
+    "form": {
+      "title": "给我们留言",
+      "name": "您的姓名",
+      "email": "您的邮箱",
+      "message": "您的留言",
+      "submit": "发送留言",
+      "submitting": "发送中...",
+      "success": "感谢！我们会尽快回复您。",
+      "error": "出了点问题。请重试。"
+    }
+  },
+  "languageSwitcher": {
+    "label": "语言"
+  },
+  "metadata": {
+    "home": {
+      "title": "IdolDo - 几秒钟为你的偶像创作游戏",
+      "description": "即刻创建、分享和游玩偶像粉丝游戏。无需编程。通过 App Clip 分享，让粉丝们一起玩。"
+    },
+    "waitlist": {
+      "title": "加入等待列表 - IdolDo",
+      "description": "第一时间获知 IdolDo 发布消息。加入我们的等待列表获得抢先体验。"
+    },
+    "privacy": {
+      "title": "隐私政策 - IdolDo",
+      "description": "了解 IdolDo 如何收集、使用和保护您的个人信息。"
+    },
+    "tos": {
+      "title": "服务条款 - IdolDo",
+      "description": "阅读使用 IdolDo 服务的条款和条件。"
+    },
+    "about": {
+      "title": "关于我们 - IdolDo",
+      "description": "了解更多关于 IdolDo 以及我们赋能粉丝创造力的使命。"
+    },
+    "contact": {
+      "title": "联系我们 - IdolDo",
+      "description": "联系 IdolDo 团队。我们期待听到您的声音！"
+    }
+  }
+}

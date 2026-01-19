@@ -1,8 +1,10 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import LanguageSwitcher from './language-switcher';
 
 interface WaitlistResponse {
   status: 'joined' | 'exists';
@@ -10,6 +12,7 @@ interface WaitlistResponse {
 }
 
 export default function LandingHero() {
+  const t = useTranslations();
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
@@ -19,7 +22,7 @@ export default function LandingHero() {
     event.preventDefault();
     if (!email.trim()) {
       setStatus('error');
-      setErrorMessage('Please enter a valid email address.');
+      setErrorMessage(t('hero.emailError'));
       return;
     }
     setStatus('submitting');
@@ -34,7 +37,7 @@ export default function LandingHero() {
 
       if (!response.ok) {
         const errorData = (await response.json().catch(() => null)) as { error?: string } | null;
-        throw new Error(errorData?.error ?? 'Failed to join waitlist.');
+        throw new Error(errorData?.error ?? t('hero.submitError'));
       }
 
       const data = (await response.json()) as WaitlistResponse;
@@ -46,7 +49,7 @@ export default function LandingHero() {
       router.push(`/waitlist?${params.toString()}`);
     } catch (error) {
       setStatus('error');
-      setErrorMessage(error instanceof Error ? error.message : 'Failed to join waitlist.');
+      setErrorMessage(error instanceof Error ? error.message : t('hero.submitError'));
     }
   }
 
@@ -60,16 +63,17 @@ export default function LandingHero() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
           <div className="flex items-center gap-2">
             <span className="material-symbols-outlined text-3xl text-primary">star</span>
-            <h2 className="text-xl font-bold tracking-tight">IdolDo</h2>
+            <h2 className="text-xl font-bold tracking-tight">{t('common.siteName')}</h2>
             <span className="ml-1 hidden rounded-full bg-primary/10 px-2 py-0.5 text-xs font-bold uppercase tracking-wider text-primary sm:inline-block">
-              Beta
+              {t('nav.beta')}
             </span>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher />
             <Link
               className="rounded-full bg-primary/10 px-5 py-2 text-sm font-bold text-primary transition-colors hover:bg-primary/20 dark:bg-primary dark:text-white dark:hover:bg-primary-dark"
-              href="/waitlist">
-              Join Waitlist
+              href="#hero-form">
+              {t('nav.joinWaitlist')}
             </Link>
           </div>
         </div>
@@ -80,22 +84,28 @@ export default function LandingHero() {
           <div className="z-10 flex max-w-[600px] flex-col gap-8 text-center lg:w-1/2 lg:text-left">
             <div className="space-y-4">
               <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-text-main-light dark:text-white sm:text-5xl lg:text-6xl">
-                Make a Game for Your{' '}
-                <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">Idol</span>{' '}
-                in 3 Seconds
+                {t.rich('hero.title', {
+                  highlight: (chunks) => (
+                    <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+                      {chunks}
+                    </span>
+                  ),
+                })}
               </h1>
               <h2 className="mx-auto max-w-lg text-lg font-medium leading-relaxed text-text-sub-light dark:text-text-sub-dark sm:text-xl lg:mx-0">
-                Unleash your creativity. No coding required. Share instantly via App Clip and let the fandom play.
+                {t('hero.subtitle')}
               </h2>
             </div>
             <form
               onSubmit={handleJoin}
-              className="mx-auto flex w-full max-w-md flex-col gap-2 rounded-full border border-gray-100 bg-white p-2 shadow-lg dark:border-white/5 dark:bg-surface-dark sm:flex-row lg:mx-0">
+              className="mx-auto flex w-full max-w-md flex-col gap-2 rounded-xl sm:rounded-full border border-gray-100 bg-white p-2 shadow-lg dark:border-white/5 dark:bg-surface-dark sm:flex-row lg:mx-0"
+              id="hero-form"
+            >
               <div className="flex h-12 flex-1 items-center px-4 sm:h-14">
                 <span className="material-symbols-outlined text-text-sub-light dark:text-text-sub-dark">mail</span>
                 <input
-                  className="ml-2 w-full border-none bg-transparent text-text-main-light placeholder:text-text-sub-light/50 focus:ring-0 dark:text-white dark:placeholder:text-text-sub-dark/50"
-                  placeholder="Enter your email"
+                  className="ml-2 w-full h-10 border-none bg-transparent text-text-main-light placeholder:text-text-sub-light/50 focus:ring-0 dark:text-white dark:placeholder:text-text-sub-dark/50"
+                  placeholder={t('hero.emailPlaceholder')}
                   type="email"
                   value={email}
                   onChange={handleEmailChange}
@@ -106,12 +116,12 @@ export default function LandingHero() {
                 type="submit"
                 disabled={status === 'submitting'}
                 className="h-12 whitespace-nowrap rounded-full bg-primary px-8 font-bold text-white shadow-glow transition-all hover:bg-primary-dark active:scale-95 disabled:cursor-not-allowed disabled:opacity-70 sm:h-14">
-                {status === 'submitting' ? 'Joining...' : 'Get Early Access'}
+                {status === 'submitting' ? t('hero.submitting') : t('hero.cta')}
               </button>
             </form>
             <p className="flex items-center justify-center gap-1 text-xs font-medium text-text-sub-light dark:text-text-sub-dark lg:justify-start">
               <span className="material-symbols-outlined text-sm">lock</span>
-              No spam. Unsubscribe anytime.
+              {t('hero.noSpam')}
             </p>
             {status === 'error' ? <p className="text-xs font-medium text-red-500">{errorMessage}</p> : null}
           </div>
@@ -231,49 +241,49 @@ export default function LandingHero() {
                           <div className="grid w-full grid-cols-4 gap-3">
                             <div className="group relative aspect-square overflow-hidden rounded-full border-2 border-white bg-pink-100 shadow-lg">
                               <div className="absolute inset-0 bg-primary/20 transition-colors group-hover:bg-transparent"></div>
-                              <span className="material-symbols-outlined absolute inset-0 flex items-center justify-center text-3xl text-primary/50">
+                              <span className="material-symbols-outlined absolute inset-0 flex! items-center justify-center text-3xl text-primary/50">
                                 face_3
                               </span>
                             </div>
                             <div className="relative aspect-square overflow-hidden rounded-full border-2 border-white bg-purple-100 shadow-lg">
-                              <span className="material-symbols-outlined absolute inset-0 flex items-center justify-center text-3xl text-purple-600/50">
+                              <span className="material-symbols-outlined absolute inset-0 flex! items-center justify-center text-3xl text-purple-600/50">
                                 face_2
                               </span>
                             </div>
                             <div className="relative aspect-square overflow-hidden rounded-full border-2 border-white bg-blue-100 shadow-lg">
-                              <span className="material-symbols-outlined absolute inset-0 flex items-center justify-center text-3xl text-blue-600/50">
+                              <span className="material-symbols-outlined absolute inset-0 flex! items-center justify-center text-3xl text-blue-600/50">
                                 face_4
                               </span>
                             </div>
                             <div className="relative aspect-square overflow-hidden rounded-full border-2 border-white bg-pink-100 shadow-lg">
-                              <span className="material-symbols-outlined absolute inset-0 flex items-center justify-center text-3xl text-primary/50">
+                              <span className="material-symbols-outlined absolute inset-0 flex! items-center justify-center text-3xl text-primary/50">
                                 face_3
                               </span>
                             </div>
                             <div className="relative aspect-square overflow-hidden rounded-full border-2 border-white bg-yellow-100 shadow-lg">
-                              <span className="material-symbols-outlined absolute inset-0 flex items-center justify-center text-3xl text-yellow-600/50">
+                              <span className="material-symbols-outlined absolute inset-0 flex! items-center justify-center text-3xl text-yellow-600/50">
                                 face_5
                               </span>
                             </div>
                             <div className="relative aspect-square overflow-hidden rounded-full border-2 border-white bg-blue-100 shadow-lg">
-                              <span className="material-symbols-outlined absolute inset-0 flex items-center justify-center text-3xl text-blue-600/50">
+                              <span className="material-symbols-outlined absolute inset-0 flex! items-center justify-center text-3xl text-blue-600/50">
                                 face_4
                               </span>
                             </div>
                             <div className="relative aspect-square overflow-hidden rounded-full border-2 border-white bg-purple-100 shadow-lg">
-                              <span className="material-symbols-outlined absolute inset-0 flex items-center justify-center text-3xl text-purple-600/50">
+                              <span className="material-symbols-outlined absolute inset-0 flex! items-center justify-center text-3xl text-purple-600/50">
                                 face_2
                               </span>
                             </div>
                             <div className="relative aspect-square overflow-hidden rounded-full border-2 border-white bg-yellow-100 shadow-lg">
-                              <span className="material-symbols-outlined absolute inset-0 flex items-center justify-center text-3xl text-yellow-600/50">
+                              <span className="material-symbols-outlined absolute inset-0 flex! items-center justify-center text-3xl text-yellow-600/50">
                                 face_5
                               </span>
                             </div>
                             <div className="aspect-square rounded-full border-2 border-dashed border-white/20 bg-white/5"></div>
                             <div className="aspect-square rounded-full border-2 border-dashed border-white/20 bg-white/5"></div>
                             <div className="relative aspect-square overflow-hidden rounded-full border-2 border-white bg-pink-100 shadow-lg ring-4 ring-primary/50 animate-pulse">
-                              <span className="material-symbols-outlined absolute inset-0 flex items-center justify-center text-3xl text-primary/50">
+                              <span className="material-symbols-outlined absolute inset-0 flex! items-center justify-center text-3xl text-primary/50">
                                 face_3
                               </span>
                             </div>
