@@ -17,16 +17,13 @@ export function IdolDoChip({ label, selected = false, onPress, style }: IdolDoCh
   const borderColor = selected ? colors.primary : colors.border;
 
   function renderPressableStyle({ pressed }: { pressed: boolean }) {
-    return [
-      styles.base,
-      { backgroundColor, borderColor },
-      pressed ? styles.pressed : null,
-      style,
-    ];
+    return [styles.base, { backgroundColor, borderColor }, pressed ? styles.pressed : null, style];
   }
 
   return (
-    <Pressable onPress={onPress} style={renderPressableStyle}>
+    <Pressable
+      onPress={onPress}
+      style={renderPressableStyle}>
       <Text style={[styles.text, { color: textColor }]}>{label}</Text>
     </Pressable>
   );

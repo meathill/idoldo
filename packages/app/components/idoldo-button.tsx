@@ -22,14 +22,7 @@ const SIZE_STYLE: Record<IdolDoButtonSize, { height: number; paddingHorizontal: 
   lg: { height: 56, paddingHorizontal: 26, fontSize: 18 },
 };
 
-export function IdolDoButton({
-  title,
-  onPress,
-  variant = 'primary',
-  size = 'md',
-  icon,
-  style,
-}: IdolDoButtonProps) {
+export function IdolDoButton({ title, onPress, variant = 'primary', size = 'md', icon, style }: IdolDoButtonProps) {
   const { colors } = useIdolDoTheme();
   const sizeConfig = SIZE_STYLE[size];
   const isPrimary = variant === 'primary';
@@ -55,7 +48,9 @@ export function IdolDoButton({
   }
 
   return (
-    <Pressable onPress={onPress} style={renderPressableStyle}>
+    <Pressable
+      onPress={onPress}
+      style={renderPressableStyle}>
       {icon ? <View style={styles.icon}>{icon}</View> : null}
       <Text style={[styles.text, { color: textColor, fontSize: sizeConfig.fontSize }]}>{title}</Text>
     </Pressable>

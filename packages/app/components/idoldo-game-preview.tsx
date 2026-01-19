@@ -74,7 +74,11 @@ export function IdolDoGamePreview({ width = 280, height = 520 }: IdolDoGamePrevi
         <View style={[styles.phoneHeader, { backgroundColor: 'rgba(255,255,255,0.8)' }]}>
           <View style={styles.avatarBlock}>
             <View style={[styles.avatarIcon, { borderColor: colors.primary }]}>
-              <IdolDoIcon name="face" size={18} color={colors.primary} />
+              <IdolDoIcon
+                name="face"
+                size={18}
+                color={colors.primary}
+              />
             </View>
             <View>
               <Text style={styles.avatarLabel}>My Idol</Text>
@@ -82,7 +86,11 @@ export function IdolDoGamePreview({ width = 280, height = 520 }: IdolDoGamePrevi
             </View>
           </View>
           <View style={styles.timerPill}>
-            <IdolDoIcon name="favorite" size={14} color={colors.primary} />
+            <IdolDoIcon
+              name="favorite"
+              size={14}
+              color={colors.primary}
+            />
             <Text style={[styles.timerText, { color: colors.primary }]}>00:45</Text>
           </View>
         </View>
@@ -92,12 +100,22 @@ export function IdolDoGamePreview({ width = 280, height = 520 }: IdolDoGamePrevi
 
         <View style={styles.grid}>
           {PREVIEW_ITEMS.map((item) => (
-            <View key={item.id} style={styles.gridCell}>
+            <View
+              key={item.id}
+              style={styles.gridCell}>
               {item.type === 'photo' && item.uri ? (
-                <Image source={{ uri: item.uri }} style={styles.gridImage} contentFit="cover" />
+                <Image
+                  source={{ uri: item.uri }}
+                  style={styles.gridImage}
+                  contentFit="cover"
+                />
               ) : (
                 <View style={[styles.starCell, { backgroundColor: colors.primary }]}>
-                  <IdolDoIcon name="star" size={18} color={colors.white} />
+                  <IdolDoIcon
+                    name="star"
+                    size={18}
+                    color={colors.white}
+                  />
                 </View>
               )}
             </View>
@@ -106,15 +124,27 @@ export function IdolDoGamePreview({ width = 280, height = 520 }: IdolDoGamePrevi
 
         <View style={styles.phoneControls}>
           <View style={styles.controlButton}>
-            <IdolDoIcon name="emoji-objects" size={18} color="#f59e0b" />
+            <IdolDoIcon
+              name="emoji-objects"
+              size={18}
+              color="#f59e0b"
+            />
             <Text style={styles.controlLabel}>Hint</Text>
           </View>
           <View style={styles.loveButton}>
-            <IdolDoIcon name="favorite" size={24} color={colors.white} />
+            <IdolDoIcon
+              name="favorite"
+              size={24}
+              color={colors.white}
+            />
             <Text style={styles.loveText}>Send Love</Text>
           </View>
           <View style={styles.controlButton}>
-            <IdolDoIcon name="campaign" size={18} color="#3b82f6" />
+            <IdolDoIcon
+              name="campaign"
+              size={18}
+              color="#3b82f6"
+            />
             <Text style={styles.controlLabel}>Shuffle</Text>
           </View>
         </View>

@@ -20,17 +20,24 @@ export function IdolDoTopBar({ title, onBack, right }: IdolDoTopBarProps) {
     }
 
     return (
-      <Pressable onPress={onBack} style={styles.iconButton}>
-        <IdolDoIcon name="arrow-back" size={24} color={colors.textMain} />
+      <Pressable
+        onPress={onBack}
+        style={styles.iconButton}>
+        <IdolDoIcon
+          name="arrow-back"
+          size={24}
+          color={colors.textMain}
+        />
       </Pressable>
     );
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}
-    >
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       {renderBackButton()}
-      <Text style={[styles.title, { color: colors.textMain }]} numberOfLines={1}>
+      <Text
+        style={[styles.title, { color: colors.textMain }]}
+        numberOfLines={1}>
         {title}
       </Text>
       <View style={styles.iconSpacer}>{right}</View>

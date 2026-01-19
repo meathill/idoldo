@@ -22,12 +22,17 @@ export function IdolDoStepper({ steps, currentStep }: IdolDoStepperProps) {
         const textColor = isCompleted || isActive ? colors.primary : colors.textMuted;
 
         return (
-          <View key={`${label}-${index}`} style={styles.stepItemWrapper}>
+          <View
+            key={`${label}-${index}`}
+            style={styles.stepItemWrapper}>
             <View style={styles.stepRow}>
-              <View style={[styles.circle, { backgroundColor: circleStyle, borderColor }]}
-              >
+              <View style={[styles.circle, { backgroundColor: circleStyle, borderColor }]}>
                 {isCompleted ? (
-                  <IdolDoIcon name="check" size={16} color={colors.white} />
+                  <IdolDoIcon
+                    name="check"
+                    size={16}
+                    color={colors.white}
+                  />
                 ) : (
                   <Text style={[styles.stepIndex, { color: isActive ? colors.white : colors.textMuted }]}>
                     {index + 1}
@@ -35,12 +40,7 @@ export function IdolDoStepper({ steps, currentStep }: IdolDoStepperProps) {
                 )}
               </View>
               {index < steps.length - 1 ? (
-                <View
-                  style={[
-                    styles.connector,
-                    { backgroundColor: isCompleted ? colors.primary : colors.border },
-                  ]}
-                />
+                <View style={[styles.connector, { backgroundColor: isCompleted ? colors.primary : colors.border }]} />
               ) : null}
             </View>
             <Text style={[styles.stepLabel, { color: textColor }]}>{label}</Text>
